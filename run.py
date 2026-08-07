@@ -1,4 +1,4 @@
 from club import app
 
-if __name__=='__main':
+if __name__=='__main__':
     app.run(debug=True)
