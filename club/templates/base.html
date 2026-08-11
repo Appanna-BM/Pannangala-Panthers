@@ -36,11 +36,13 @@
                 <li><a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Home</a></li>
                 <li><a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">About</a></li>
                 <li><a href="{{ url_for('teams') }}" class="{% if request.endpoint == 'teams' %}active{% endif %}">Team</a></li>
-                <li><a href="{{ url_for('tournaments') }}" class="{% if request.endpoint == 'tournaments' %}active{% endif %}">Tournaments</a></li>
+                <li><a href="{{ url_for('tournament') }}" class="{% if request.endpoint == 'tournament' %}active{% endif %}">Tournament</a></li>
                 <li><a href="{{ url_for('gallery') }}" class="{% if request.endpoint == 'gallery' %}active{% endif %}">Gallery</a></li>
-                <li><a href="{{ url_for('contact') }}" class="nav-btn {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a></li>
-
+                <li><a href="{{ url_for('contact') }}" class="{% if request.endpoint == 'contact' %}active{% endif %}">Contact Us</a></li>
+                <li><a href="{{ url_for('shop') }}" class="{% if request.endpoint == 'shop' %}active{% endif %}">Shop</a></li>
             </ul>
+
+
         </div>
     </nav>
     <main class="main-content">
@@ -60,7 +62,7 @@
                     <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="{{ url_for('about') }}">About Us</a></li>
                     <li><a href="{{ url_for('teams') }}">Team</a></li>
-                    <li><a href="{{ url_for('fixtures') }}">Tournaments</a></li>
+                    <li><a href="{{ url_for('tournament') }}">Tournament</a></li>
                     <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
                 </ul>
             </div>

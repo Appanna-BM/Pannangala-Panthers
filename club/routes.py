@@ -18,9 +18,9 @@ def about():
 def teams():
     return render_template('teams.html')
 
-@app.route('/fixtures')
-def fixtures():
-    return render_template('fixtures.html')
+@app.route('/tournament')
+def tournament():
+    return render_template('tournament.html')
 
 @app.route('/gallery')
 def gallery():
@@ -29,3 +29,15 @@ def gallery():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@app.route('/shop')
+def shop():
+    return render_template('shop.html')
+
+@app.route('/login_page')
+def login_page():
+    return render_template('login.html')
+
+@app.route('/register_page')
+def register_page():
+    return render_template('register.html')
