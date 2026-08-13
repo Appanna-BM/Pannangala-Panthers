@@ -62,8 +62,10 @@ ul { list-style: none; }
 
 .nav-links {
     display: flex;
+    list-style: none;
     align-items: center;
     gap: 1.5rem;
+    padding: 0;
 }
 
 .nav-links a {

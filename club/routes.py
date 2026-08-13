@@ -14,9 +14,9 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route('/teams')
-def teams():
-    return render_template('teams.html')
+@app.route('/team')
+def team():
+    return render_template('team.html')
 
 @app.route('/tournament')
 def tournament():

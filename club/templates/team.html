@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}
+    team-info
+{% endblock %}
+{% block head_styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/team.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="team-container">
+
+    <!--Player card-->
+    <div class="player-card">
+        <img src="{{ url_for('static', filename='images/uploads/VinayPoovanna.jpeg') }}" alt="Vinay Poovanna" class="player-img">
+        <div class="player-info">
+            <h3 class="player-name">Vinay Poovanna</h3>
+            <p class="player-role"><strong>Player Position :</strong> Right-Half, Left-Half, Left-Wing, Right-Half</p>
+            <p class="player-designation"><strong>Designation:</strong> Club President</p>
+        </div>
+    </div>
+
+    <div class="player-card">
+        <img src="{{ url_for('static', filename='images/uploads/Bopanna.jpeg') }}" alt="Bopanna" class="player-img">
+        <div class="player-info">
+            <h3 class="player-name">Shishir Bopanna</h3>
+            <p class="player-role"><strong>Player Position :</strong> Center-Forward, Right-In, Left-In</p>
+        </div>
+    </div>
+
+    <div class="player-card">
+        <img src="{{ url_for('static', filename='images/uploads/limpith.jpeg') }}" alt="Limpith Ponnanna" class="player-img">
+        <div class="player-info">
+            <h3 class="player-name">Limpith Ponnanna</h3>
+            <p class="player-role"><strong>Player Position :</strong> Right-half, Right-back</p>
+        </div>
+    </div>
+
+    <div class="player-card">
+        <img src="{{ url_for('static', filename='images/uploads/Nanjappa.jpeg') }}" alt="Nanjappa" class="player-img">
+        <div class="player-info">
+            <h3 class="player-name">Nanjappa Periyanda</h3>
+            <p class="player-role"><strong>Player Position :</strong> Right In, Right Out</p>
+        </div>
+    </div>
+
+    <div class="player-card">
+        <img src="{{ url_for('static', filename='images/uploads/subreth.jpeg') }}" alt="Subreth" class="player-img">
+        <div class="player-info">
+            <h3 class="player-name">Subreth</h3>
+            <p class="player-role"><strong>Player Position :</strong> Defender</p>
+        </div>
+    </div>
+
+    <div class="player-card">
+        <img src="{{ url_for('static', filename='images/uploads/gagan.jpeg') }}" alt="gagan" class="player-img">
+        <div class="player-info">
+            <h3 class="player-name">Gagan</h3>
+            <p class="player-role"><strong>Player Position :</strong> Left extreme, Right extreme</p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
