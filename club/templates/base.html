@@ -26,7 +26,7 @@
             <a href="{{ url_for('home') }}" class="nav-logo">
                 <img src="{{ url_for('static', filename='images/Logo-Black.png')}}" alt="Club Logo" class="logo-img">
             </a>
-            <!-- Hamburger (mobile) -->
+            <!-- Hamburger toggle for mobile  -->
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -46,9 +46,11 @@
 
         </div>
     </nav>
+    <!-- jinja template to add main template on other file upon extending -->
     <main class="main-content">
         {% block content %}{% endblock %}
     </main>
+    <!-- Footer of the website -->
     <footer class="footer">
         <div class="footer-container">
             <!-- About -->
