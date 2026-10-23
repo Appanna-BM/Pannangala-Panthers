@@ -2,12 +2,18 @@
 {% block title %}
     team-info
 {% endblock %}
-{% block head_styles %}
+{% block head %}
     <!--link to team.css stylesheet-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/team.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/team.css')}}?v=1.1">
 {% endblock %}
 
 {% block content %}
+ <!-- TEAM HEADER -->
+<div class="pp-container pp-team-header">
+    <span class="pp-eyebrow reveal">OUR SQUAD</span>
+    <h1 class="pp-hero_title reveal">Meet the Lineup</h1>
+    <p class="pp-team-subtitle reveal">The athletes driving our club forward on the turf.</p>
+</div>
 <div class="team-container">
 
     <!--Player card-->
@@ -17,6 +23,15 @@
             <h3 class="player-name">Vinay Poovanna</h3>
             <p class="player-role"><strong>Player Position :</strong> Right-Half, Left-Half, Left-Wing, Right-Half</p>
             <p class="player-designation"><strong>Designation:</strong> Club President</p>
+        </div>
+    </div>
+
+    <div class="player-card">
+        <img src="{{ url_for('static', filename='images/uploads/VivekPonnanna.jpeg') }}" alt="Bopanna" class="player-img">
+        <div class="player-info">
+            <h3 class="player-name">Vivek Ponnanna</h3>
+            <p class="player-role"><strong>Player Position :</strong> Mid-Feilder</p>
+            <p class="player-designation"><strong>Designation:</strong> Club Secretory</p>
         </div>
     </div>
 

@@ -1,3 +1,35 @@
+.pp-team-header {
+    text-align: center;
+    padding: 60px 20px 40px 20px; /* Generous top and bottom spacing */
+    max-width: 800px;
+    margin: 0 auto; /* Essential: Centers the container block itself */
+}
+
+.pp-eyebrow {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px; /* Gives it an athletic, jersey-style look */
+    color: #666 !important; /* Light gray accent color */
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.pp-hero_title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #111 !important;
+    margin: 0 0 12px 0;
+}
+
+.pp-team-subtitle {
+    font-size: 1.1rem;
+    color: #555 !important;
+    max-width: 600px;
+    margin: 0 auto; /* Centers the paragraph block text */
+    line-height: 1.5;
+}
+
 .team-container{
 display: flex;
 flex-wrap: wrap; /* moves cards to next row on small screen */

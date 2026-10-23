@@ -60,6 +60,20 @@ ul { list-style: none; }
     object-fit: contain;
 }
 
+.club-info h1{
+margin:0;
+font-weight:700px;
+font-size:17px;
+color: #0F5132;
+}
+
+.club-info p{
+margin: 0;
+font-weight: 400px;
+font-size:13px;
+color: var(--pp-gold);
+}
+
 .nav-links {
     display: flex;
     list-style: none;

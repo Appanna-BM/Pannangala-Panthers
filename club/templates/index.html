@@ -3,5 +3,193 @@
     Welcome to PannangalaPanthers Club
 {% endblock %}
 
+{% block head %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
 {% block content %}
+<main class="pp">
+
+
+  <!-- HERO  -->
+  <section class="pp-hero">
+    <div class="pp-hero__bg" aria-hidden="true"></div>
+    <div class="pp-hero__glow" aria-hidden="true"></div>
+
+    <div class="pp-container pp-hero__inner">
+      <span class="pp-eyebrow reveal">Est. 2024 &middot; Yavakapadi, Kodagu</span>
+
+      <h1 class="pp-hero__title reveal" style="--d:.08s">
+        Pannangala
+        <span class="pp-gold">Panthers</span>
+      </h1>
+
+      <p class="pp-hero__lead reveal" style="--d:.16s">
+        Passion, teamwork, and excellence on the pitch. Rooted in the soil of Kodagu,
+        fuelled by the spirit of the game.
+      </p>
+
+      <div class="pp-hero__actions reveal" style="--d:.24s">
+        <a class="pp-btn pp-btn--gold" href="/contact">Join the Pride</a>
+        <a class="pp-btn pp-btn--ghost" href="/tournament">View Fixtures</a>
+      </div>
+
+      <dl class="pp-stats reveal" style="--d:.32s">
+        <div class="pp-stat"><dt>Years on the pitch</dt><dd>02<span>+</span></dd></div>
+        <div class="pp-stat"><dt>Squad members</dt><dd>26</dd></div>
+        <div class="pp-stat"><dt>Trophies won</dt><dd>--</dd></div>
+      </dl>
+    </div>
+
+    <div class="pp-ticker" aria-hidden="true">
+      <div class="pp-ticker__track">
+        <span>Pannangala Panthers</span><i></i><span>Kodagu Hockey</span><i></i>
+        <span>Passion &middot; Teamwork &middot; Excellence</span><i></i>
+        <span>Pannangala Panthers</span><i></i><span>Kodagu Hockey</span><i></i>
+        <span>Passion &middot; Teamwork &middot; Excellence</span><i></i>
+      </div>
+    </div>
+  </section>
+
+  <!--  FIXTURES  -->
+  <section class="pp-section pp-fixtures">
+    <div class="pp-container">
+      <header class="pp-head">
+        <div>
+          <span class="pp-eyebrow pp-eyebrow--dark">KNHT 2026</span>
+          <h2 class="pp-h2">Fixtures</h2>
+        </div>
+        <a class="pp-link" href="/tournament">Full calendar</a>
+      </header>
+
+      <ul class="pp-fixture-list">
+        {# Replace this list with: {% for m in matches %} ... {% endfor %} #}
+        <li class="pp-fixture">
+          <span class="pp-fixture__date"><b>29</b> Sep</span>
+          <div class="pp-fixture__meta">
+            <span class="pp-fixture__cup">KNHT 2026 &middot; GROUP STAGE</span>
+            <h3>STC MADIKERI <em>vs</em> KODAGU VIDHYALAYA GIRLS</h3>
+          </div>
+          <div class="pp-fixture__when">
+            <span class="pp-time">08:30 AM</span>
+            <span class="pp-venue">SAI TURF MADIKERI</span>
+          </div>
+          <span class="pp-tag pp-tag--home">Home</span>
+        </li>
+
+        <li class="pp-fixture">
+          <span class="pp-fixture__date"><b>29</b> Sep</span>
+          <div class="pp-fixture__meta">
+            <span class="pp-fixture__cup">KNHT 2026 &middot; GROUP STAGE</span>
+            <h3>FMC VIRAJPET <em>vs</em> KODAGU VIDHYALAYA BOYS</h3>
+          </div>
+          <div class="pp-fixture__when">
+            <span class="pp-time">10:45 AM</span>
+            <span class="pp-venue">SAI Turf MADIKERI</span>
+          </div>
+          <span class="pp-tag pp-tag--home">HOME</span>
+        </li>
+
+        <li class="pp-fixture">
+          <span class="pp-fixture__date"><b>29</b> Sep</span>
+          <div class="pp-fixture__meta">
+            <span class="pp-fixture__cup">KNHT 2026 &middot; GROUP STAGE</span>
+            <h3>LANCERS <em>vs</em> PANNANGALA PANTHERS PINK</h3>
+          </div>
+          <div class="pp-fixture__when">
+            <span class="pp-time">1:00 PM</span>
+            <span class="pp-venue">SAI TURF MADIKERI</span>
+          </div>
+          <span class="pp-tag pp-tag--home">Home</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!--SQUAD -->
+  <section class="pp-section pp-squad">
+    <div class="pp-container">
+      <span class="pp-eyebrow">The Squad</span>
+      <h2 class="pp-h2 pp-h2--xl">Built for <span class="pp-gold">speed.</span></h2>
+
+      <div class="pp-players">
+        <article class="pp-player">
+          <div class="pp-player__photo" style="background-image:url('{{ url_for('static', filename='images/uploads/VinayPoovanna.jpeg') }}')" data-initials="VP"></div>
+          <div class="pp-player__body">
+            <span class="pp-player__no">#12 &middot; Forward</span>
+            <h3>Vinay Poovanna</h3>
+          </div>
+        </article>
+
+        <article class="pp-player">
+          <div class="pp-player__photo" style="background-image:url('{{ url_for('static', filename='images/uploads/VivekPonnanna.jpeg') }}')" data-initials="VP"></div>
+          <div class="pp-player__body">
+            <span class="pp-player__no">#18 &middot; Midfield</span>
+            <h3>Vivek Ponnanna</h3>
+          </div>
+        </article>
+
+        <article class="pp-player">
+          <div class="pp-player__photo" style="background-image:url('{{ url_for('static', filename='images/uploads/Bopanna.jpeg') }}')" data-initials="SB"></div>
+          <div class="pp-player__body">
+            <span class="pp-player__no">#12 &middot; Forward</span>
+            <h3>Shishir Bopanna</h3>
+          </div>
+        </article>
+      </div>
+
+      <a class="pp-link pp-link--light" href="{{ url_for('team')}}">Meet the full squad</a>
+    </div>
+  </section>
+
+
+<!--Gallery-->
+  <section class="pp-section pp-gallery-sec">
+    <div class="pp-container">
+      <header class="pp-head">
+        <div>
+          <span class="pp-eyebrow pp-eyebrow--dark">Moments</span>
+          <h2 class="pp-h2">Life at the club</h2>
+        </div>
+        <a class="pp-link" href="/gallery">Enter gallery</a>
+      </header>
+    </div>
+    <div class="pp-gallery">
+      <figure class="pp-shot" style="background-image:url('{{ url_for('static', filename='images/Team_pic.jpeg') }}')"><span>Match day</span></figure>
+      <figure class="pp-shot"><span>Training</span></figure>
+      <figure class="pp-shot"><span>The huddle</span></figure>
+      <figure class="pp-shot"><span>Silverware</span></figure>
+    </div>
+  </section>
+
+
+  <!--  CTA  -->
+  <section class="pp-cta">
+    <div class="pp-container pp-cta__inner">
+      <h2>Be part of the <span class="pp-gold">legacy</span></h2>
+      <p>Play, support or sponsor — there is a place for you in the Panthers family.</p>
+      <div class="pp-hero__actions">
+        <a class="pp-btn pp-btn--gold" href="{{url_for('contact') }}">Apply for membership</a>
+        <a class="pp-btn pp-btn--ghost" href="{{url_for('shop') }}">Visit the shop</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.pp-fixture, .pp-player, .pp-shot, .pp-cta__inner');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('is-in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en, i) {
+        if (en.isIntersecting) { en.target.style.transitionDelay = (i * 60) + 'ms'; en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
 {% endblock %}

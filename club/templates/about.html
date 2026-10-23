@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block title %}
+About | Pannangala Panthers Club
+{%endblock%}
+
+{% block head %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{%block content%}
+<main class="pp">
+
+  <!--  HERO -->
+  <section class="pp-hero pp-hero--about">
+    <div class="pp-hero__bg" aria-hidden="true"></div>
+    <div class="pp-hero__glow" aria-hidden="true"></div>
+
+    <div class="pp-container pp-hero__inner">
+      <span class="pp-eyebrow reveal">Pannangala Panthers</span>
+      <h1 class="pp-hero__title reveal" style="--d:.08s">
+        Our <span class="pp-gold">Story</span>
+      </h1>
+      <p class="pp-hero__lead reveal" style="--d:.16s">
+        A brotherhood forged on the hockey fields of Kodagu. Passionate players,
+        proud traditions, and a tournament that changed the game forever.
+      </p>
+    </div>
+  </section>
+
+  <!--  ORIGINS  -->
+  <section class="pp-section pp-origins">
+    <div class="pp-container">
+      <div class="pp-split">
+        <div class="pp-split__text reveal">
+          <span class="pp-eyebrow pp-eyebrow--dark">Est. 2012</span>
+          <h2 class="pp-h2">Rooted in <span class="pp-gold">Kodagu</span></h2>
+          <p>
+            Pannangala Panthers was born in the heart of Yavakapadi, Kodagu, from a simple love
+            for field hockey. What began as a handful of friends chasing a ball on village mud
+            has grown into one of the most respected amateur clubs in the district.
+          </p>
+          <p>
+            We believe hockey is more than a sport here — it is discipline, community, and a way
+            of life passed from one generation to the next.
+          </p>
+        </div>
+        <div class="pp-split__media reveal" style="--d:.12s">
+          <img src="{{ url_for('static', filename='images/Team_pic.jpeg') }}" alt="Pannangala Panthers club members together">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KAILPOUDH NAMME ================= -->
+  <section class="pp-section pp-tournament">
+    <div class="pp-container">
+      <span class="pp-eyebrow">The Tournament We Started</span>
+      <h2 class="pp-h2 pp-h2--xl">Kailpoudh <span class="pp-gold">Namme</span></h2>
+
+      <div class="pp-tournament__grid">
+        <article class="pp-tournament__card reveal">
+          <h3>The Beginning</h3>
+          <p>
+            Pannangala Panthers proudly started the <strong>Kailpoudh Namme Hockey Tournament</strong>,
+            bringing together clubs from across Kodagu — and soon beyond — to celebrate the district's
+            deep hockey heritage.
+          </p>
+        </article>
+        <article class="pp-tournament__card reveal" style="--d:.1s">
+          <h3>A Festival of Hockey</h3>
+          <p>
+            Kailpoudh Namme is more than a competition. It is a festival where villages, families,
+            and old rivals meet on the pitch, sharing fierce matches and stronger friendships.
+          </p>
+        </article>
+        <article class="pp-tournament__card reveal" style="--d:.2s">
+          <h3>Legacy in Coorg</h3>
+          <p>
+            Year after year, the tournament has become a landmark event in Coorg's sporting calendar,
+            inspiring young players and keeping Kodagu's hockey spirit alive.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VALUES ================= -->
+  <section class="pp-section pp-values">
+    <div class="pp-container">
+      <header class="pp-head">
+        <div>
+          <span class="pp-eyebrow pp-eyebrow--dark">What drives us</span>
+          <h2 class="pp-h2">Our Values</h2>
+        </div>
+      </header>
+
+      <div class="pp-values__grid">
+        <div class="pp-value reveal">
+          <span class="pp-value__num">01</span>
+          <h3>Passion</h3>
+          <p>Every practice, every sprint, every match is played with heart. We play for the love of the game.</p>
+        </div>
+        <div class="pp-value reveal" style="--d:.1s">
+          <span class="pp-value__num">02</span>
+          <h3>Teamwork</h3>
+          <p>No one carries the badge alone. On and off the field, we move as one pride.</p>
+        </div>
+        <div class="pp-value reveal" style="--d:.2s">
+          <span class="pp-value__num">03</span>
+          <h3>Excellence</h3>
+          <p>We chase improvement relentlessly — better skills, stronger character, bigger dreams.</p>
+        </div>
+        <div class="pp-value reveal" style="--d:.3s">
+          <span class="pp-value__num">04</span>
+          <h3>Community</h3>
+          <p>From Yavakapadi to the whole of Kodagu, we exist to give back to the people who cheer us on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="pp-cta">
+    <div class="pp-container pp-cta__inner">
+      <h2>Be part of the <span class="pp-gold">legacy</span></h2>
+      <p>Play, support or sponsor — there is a place for you in the Panthers family.</p>
+      <div class="pp-hero__actions">
+        <a class="pp-btn pp-btn--gold" href="/contact">Apply for membership</a>
+        <a class="pp-btn pp-btn--ghost" href="/team">Meet the squad</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.pp-tournament__card, .pp-value, .pp-split__text, .pp-split__media, .pp-cta__inner');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('is-in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en, i) {
+        if (en.isIntersecting) { en.target.style.transitionDelay = (i * 60) + 'ms'; en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+{% endblock %}
