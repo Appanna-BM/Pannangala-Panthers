@@ -1,14 +1,21 @@
 .idea/
 
+#Python and flask VE
 venv/
-__pycache__/
-*.pyc
+.venv/
+env/
 .env
 .flaskenv
-env/
-.venv/
+
+#Python Bytecode
+__pycache__/
+*.pyc
 *.py[cod]
 *$py.class
 
+#Os Files
 .DS_Store
 Thumbs.db
+
+#Flask instance folder
+instance/

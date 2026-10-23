@@ -1,6 +1,9 @@
-db_config={
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'Dxb@2023',
-    'database': 'Club'
+import os
+
+db_config = {
+    "host": os.getenv("DB_HOST", "127.0.0.1"),
+    "user": os.getenv("DB_USER", "root"),
+    "password": os.environ["DB_PASSWORD"],
+    "database": os.getenv("DB_NAME", "pannangala_Panthers"),
 }
+
