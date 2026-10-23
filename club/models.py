@@ -1,33 +1,26 @@
 import mysql.connector
-from config import db_config
+
+from .config import db_config
+
 
 def get_connection():
     return mysql.connector.connect(**db_config)
 
-def create_tables():
-    conn = get_connection()
-    cursor = conn.cursor()
 
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS team (
-        member_id INT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(100),
-        email VARCHAR(100) UNIQUE,
-        position varchar(100) NOT NULL,
-        designation varchar(100),
-        join_date DATE
-    )
-    """)
+def get_players():
+    connection = get_connection()
+    cursor = None
 
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS contact_us (
-        contact_id INT AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(50) UNIQUE,
-        email VARCHAR(255) NOT NULL UNIQUE CHECk,
-        
-    )
-    """)
-
-    conn.commit()
-    cursor.close()
-    conn.close()
+    try:
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute("""
+            SELECT id, name, positions, designation, image_filename, image_url
+            FROM players
+            WHERE is_active = TRUE
+            ORDER BY display_order, id
+        """)
+        return cursor.fetchall()
+    finally:
+        if cursor is not None:
+            cursor.close()
+        connection.close()
