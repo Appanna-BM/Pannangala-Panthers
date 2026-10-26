@@ -4,11 +4,51 @@
 {% endblock %}
 {% block head %}
     <!--link to team.css stylesheet-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/team.css')}}?v=1.1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/team.css')}}?v=1.2">
 {% endblock %}
 
 {% block content %}
  <!-- TEAM HEADER -->
+<div class="pp-container pp-team-header">
+    <span class="pp-eyebrow reveal">PANTHERS FAMILY</span>
+    <h1 class="pp-hero_title reveal">BEHIND THE CLUB</h1>
+    <p class="pp-team-subtitle reveal">Dedicated members empowering our team on and off the field</p>
+</div>
+
+<div class="member-container">
+    <!--Member card-->
+    {% for member in members %}
+    <div class="member-card">
+        <div class="member-photo">
+            {% if member.image_url %}
+                <img
+                    src="{{ member.image_url }}"
+                    alt="{{ member.name }}"
+                    class="member-img"
+                    loading="lazy"
+                >
+            {% elif member.image_filename %}
+                <img
+                    src="{{ url_for('static', filename='images/members/' ~ member.image_filename) }}"
+                    alt="{{ member.name }}"
+                    class="member-img"
+                    loading="lazy"
+                >
+            {% else %}
+                <!-- fallback when no photo is uploaded -->
+                <div class="member-img member-img--empty" aria-hidden="true">{{ member.name[:1] }}</div>
+            {% endif %}
+        </div>
+        <div class="member-info">
+            <h3 class="member-name">{{ member.name }}</h3>
+            {% if member.designation %}
+                <p class="member-role">{{ member.designation }}</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 <div class="pp-container pp-team-header">
     <span class="pp-eyebrow reveal">OUR SQUAD</span>
     <h1 class="pp-hero_title reveal">Meet the Lineup</h1>
@@ -24,12 +64,14 @@
                 src="{{ player.image_url }}"
                 alt="{{ player.name }}"
                 class="player-img"
+                loading="lazy"
             >
         {% elif player.image_filename %}
         <img
             src="{{ url_for('static', filename='images/players/' ~ player.image_filename) }}"
             alt="{{ player.name }}"
             class="player-img"
+            loading="lazy"
         >
         {% endif %}
         <div class="player-info">

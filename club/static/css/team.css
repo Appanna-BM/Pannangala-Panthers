@@ -1,16 +1,25 @@
+/* ---------- Theme tokens (change colors here, once) ---------- */
+:root {
+    --pp-red: #c0392b;        /* accent: pills, top bar */
+    --pp-red-deep: #a93226;   /* headings and player names */
+    --pp-ink: #14181f;        /* member card background */
+    --pp-role: #f1948a;       /* member designation text */
+}
+
+/* ---------- Section headers ---------- */
 .pp-team-header {
     text-align: center;
-    padding: 60px 20px 40px 20px; /* Generous top and bottom spacing */
+    padding: 60px 20px 40px 20px;
     max-width: 800px;
-    margin: 0 auto; /* Essential: Centers the container block itself */
+    margin: 0 auto;
 }
 
 .pp-eyebrow {
     display: block;
     font-size: 0.9rem;
     font-weight: 700;
-    letter-spacing: 2px; /* Gives it an athletic, jersey-style look */
-    color: #666 !important; /* Light gray accent color */
+    letter-spacing: 2px;
+    color: #666 !important;
     margin-bottom: 8px;
     text-transform: uppercase;
 }
@@ -18,7 +27,7 @@
 .pp-hero_title {
     font-size: 2.5rem;
     font-weight: 800;
-    color: #111 !important;
+    color: var(--pp-red-deep) !important; /* was #111, which reads as black */
     margin: 0 0 12px 0;
 }
 
@@ -26,76 +35,169 @@
     font-size: 1.1rem;
     color: #555 !important;
     max-width: 600px;
-    margin: 0 auto; /* Centers the paragraph block text */
+    margin: 0 auto;
     line-height: 1.5;
 }
 
-.team-container{
-display: flex;
-flex-wrap: wrap; /* moves cards to next row on small screen */
-gap: 24px;
-padding: 24px;
-justify-content: center;
+/* ---------- Member card ---------- */
+.member-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 0 24px 24px;
+    justify-content: center;
 }
 
-.player-card{
-width: 240px;
-background-color: #ffffff;
-overflow: hidden;
-border-radius: 14px;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-font-family: system-ui, -apple-system, sans-serif;
-transition: transform 0.2s ease;
-display: flex;
-flex-direction: column;
-padding: 18px;
+.member-card {
+    position: relative;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--pp-ink);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+    font-family: system-ui, -apple-system, sans-serif;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.player-card:hover{
-transform: translateY(-4px);
+/* red strip on top, same red as the player designation pill */
+.member-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--pp-red);
+    z-index: 2;
 }
 
-.player-card img{
-width: 100%;
-height: 250px;
-min-height: 260px;
-min-width: 100%;
-object-fit: cover;
-display: block;
+.member-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.3);
 }
 
-player-info{
-padding: 14px 16px 18px;
+.member-photo {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #232a35;
 }
 
-.player-name{
-margin: 0 0 6px ;
-font-size: 18px;
-font-weight: 700;
-color: #1a1a1a;
+.member-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
 }
 
-.player-role{
-margin: 0 0 6px;
-font-size: 13px;
-color: #555;
+.member-card:hover .member-img {
+    transform: scale(1.05);
 }
 
-.player-role strong{
-color: #222;
+/* shown when a member has no photo */
+.member-img--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--pp-red);
+    text-transform: uppercase;
 }
 
-.player-designation{
-display: inline-block;
-margin-top: 6px;
-font-size: 12px;
-font-weight: 600;
-color: #fff;
-background: #c0392b;
-padding: 3px 10px;
-border-radius: 999px;
+.member-info {
+    padding: 16px 18px 20px;
+    text-align: center;
 }
 
-.player-designation strong{
-font-weight: 700;
+.member-card .member-name {
+    margin: 0 0 4px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff !important;
+}
+
+.member-role {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pp-role);
+}
+
+/* ---------- Player card ---------- */
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 24px;
+    justify-content: center;
+}
+
+.player-card {
+    width: 240px;
+    background-color: #ffffff;
+    overflow: hidden;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    font-family: system-ui, -apple-system, sans-serif;
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 16px 18px; /* merged the two duplicate padding rules */
+}
+
+.player-card:hover {
+    transform: translateY(-4px);
+}
+
+.player-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Higher specificity + !important so base.css heading rules can't override it.
+   The old #1a1a1a was also almost black, which is why it looked unchanged. */
+.player-card .player-info .player-name {
+    margin: 12px 0 6px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--pp-red-deep) !important;
+}
+
+.player-role {
+    margin: 0 0 6px;
+    font-size: 13px;
+    color: #555;
+}
+
+.player-role strong {
+    color: #222;
+}
+
+.player-designation {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--pp-red);
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+.player-designation strong {
+    font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .member-card,
+    .member-img,
+    .player-card {
+        transition: none;
+    }
 }
