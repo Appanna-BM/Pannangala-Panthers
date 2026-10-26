@@ -1,7 +1,7 @@
 from club import app
 from datetime import datetime
 from flask import render_template, redirect, url_for, flash, request
-from .models import get_players
+from .models import get_players, get_members
 
 @app.context_processor
 def inject_globals():
@@ -17,8 +17,9 @@ def about():
 
 @app.route('/team')
 def team():
+    members=get_members()
     players=get_players()
-    return render_template('team.html', players=players)
+    return render_template('team.html', players=players, members=members)
 
 @app.route('/tournament')
 def tournament():

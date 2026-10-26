@@ -24,3 +24,17 @@ def get_players():
         if cursor is not None:
             cursor.close()
         connection.close()
+
+def get_members():
+    connection =get_connection()
+    cursor=None
+    try:
+        cursor=connection.cursor(dictionary=True)
+        cursor.execute(""" Select id, name, Designation AS designation, image_filename, image_url from
+         members where is_active=True Order BY display_order, id  """)
+        return cursor.fetchall()
+    finally:
+        if cursor is not None:
+            cursor.close()
+
+            connection.close()
