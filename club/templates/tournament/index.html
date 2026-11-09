@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/tournament.css') }}">
+
+<section class="tournament-page">
+    <div class="tournament-hero">
+        <p class="eyebrow">PANNANGALA PANTHERS · TOURNAMENTS</p>
+        <h1>THE ROAD TO <span>GLORY.</span></h1>
+        <p>Every season. Every battle. Every champion.
+           Explore our hockey tournament history.</p>
+    </div>
+
+    <div class="tournament-heading">
+        <h2>TOURNAMENT EDITIONS</h2>
+        <span>ALL SEASONS</span>
+    </div>
+
+    <div class="tournament-grid">
+        {% for tournament in tournaments %}
+        <article class="tournament-card">
+            <div class="card-top">
+                <span class="season">SEASON {{ tournament.year }}</span>
+                <span class="status">{{ tournament.status }}</span>
+            </div>
+
+            <h3>{{ tournament.name }}</h3>
+            <p>{{ tournament.venue or "Venue to be announced" }}</p>
+
+            <a href="#"
+               class="explore-btn">
+                EXPLORE TOURNAMENT →
+            </a>
+        </article>
+        {% else %}
+        <p class="empty-state">No tournaments have been added yet.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
