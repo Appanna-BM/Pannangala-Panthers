@@ -38,3 +38,26 @@ def get_members():
             cursor.close()
 
             connection.close()
+
+
+def get_tournaments():
+    connection = get_connection()
+    cursor = None
+
+    try:
+        cursor = connection.cursor(dictionary=True)
+
+        cursor.execute("""
+            SELECT id, name, year, description,
+                   start_date, end_date, venue, status
+            FROM tournaments
+            ORDER BY year DESC, id DESC
+        """)
+
+        return cursor.fetchall()
+
+    finally:
+        if cursor is not None:
+            cursor.close()
+        connection.close()
+
