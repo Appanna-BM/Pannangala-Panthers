@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tournament_details.css') }}">
+
+<section class="tournament-details">
+    <div class="tournament-hero">
+        <p class="eyebrow">
+            PANNANGALA PANTHERS - TOURNAMENT
+        </p>
+        <h1>
+            {{ tournament.name }}
+            <span>{{tournament.year}}</span>
+        </h1>
+        <p>
+            {{tournament.description}}
+        </p>
+        <div class="tags">
+            <span>Field Hockey</span>
+            <span>Tournament Edition</span>
+        </div>
+    </div>
+
+    <!--Tournament stats-->
+    <div class="tournament-stats">
+        <div class="stat-card">
+            <strong>{{ teams|length }}</strong>
+            <span>Teams</span>
+        </div>
+        <div class="stat-card">
+            <strong>{{fixtures|length + results|length}}</strong>
+            <span>Matches</span>
+        </div>
+        <div class="stat-card">
+            <strong>{{results|length}}</strong>
+            <span>Completed</span>
+        </div>
+    </div>
+
+    <div class="detail-tabs">
+
+        <button class="tab active" onclick="showTab('fixtures', this)">
+            Fixtures
+        </button>
+
+        <button class="tab" onclick="showTab('results', this)">
+            Results
+        </button>
+
+        <button class="tab" onclick="showTab('teams', this)">
+            Teams
+        </button>
+
+    </div>
+
+    <!-- FIXTURES -->
+    <div id="fixtures" class="tab-content active">
+
+        <h2>FIXTURES</h2>
+
+        {% if fixtures %}
+
+            {% for match in fixtures %}
+
+            <div class="match-card">
+
+                <div class="match-info">
+                    <span class="stage">
+                        {{ match.stage }}
+                    </span>
+
+                    <span>
+                        {{ match.match_date }}
+                    </span>
+                </div>
+
+                <div class="teams">
+
+                    <strong>
+                        {{ match.team1_name }}
+                    </strong>
+
+                    <span>VS</span>
+
+                    <strong>
+                        {{ match.team2_name }}
+                    </strong>
+
+                </div>
+
+                <div class="match-time">
+                    {{ match.match_time or "Time TBA" }}
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="empty-message">
+                No upcoming matches.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- RESULTS -->
+    <div id="results" class="tab-content">
+
+        <h2>RESULTS</h2>
+
+        {% if results %}
+
+            {% for match in results %}
+
+            <div class="match-card">
+
+                <div class="match-info">
+
+                    <span class="stage">
+                        {{ match.stage }}
+                    </span>
+
+                    <span>
+                        {{ match.match_date }}
+                    </span>
+
+                </div>
+
+                <div class="teams">
+
+                    <strong>
+                        {{ match.team1_name }}
+                    </strong>
+
+                    <span class="score">
+                        {{ match.team1_score }}
+                        -
+                        {{ match.team2_score }}
+                    </span>
+
+                    <strong>
+                        {{ match.team2_name }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="empty-message">
+                No matches have been completed yet.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- TEAMS -->
+    <div id="teams" class="tab-content">
+
+        <h2>TEAMS</h2>
+
+        <div class="teams-grid">
+
+            {% for team in teams %}
+
+            <div class="team-card">
+
+                <div class="team-icon">
+                    🛡
+                </div>
+
+                <span>
+                    {{ team.team_name }}
+                </span>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="{{ url_for('static', filename='js/team_details.js') }}"></script>
+{% endblock %}
