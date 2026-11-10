@@ -1,7 +1,8 @@
 from club import app
 from datetime import datetime
-from flask import render_template, redirect, url_for, flash, request
-from .models import get_players, get_members, get_tournaments
+from flask import render_template, redirect, url_for, flash, request, abort
+from .models import (get_players, get_members, get_tournaments, get_tournament,
+                      get_tournament_teams, get_tournament_matches)
 
 @app.context_processor
 def inject_globals():
@@ -25,6 +26,27 @@ def team():
 def tournament():
     tournaments=get_tournaments()
     return render_template('tournament/index.html', tournaments=tournaments)
+
+@app.route('/tournament_details/<int:tournament_id>')
+def tournament_details(tournament_id):
+    tournament=get_tournament(tournament_id)
+    if tournament is None:
+        abort(404)
+    teams=get_tournament_teams(tournament_id)
+    matches=get_tournament_matches(tournament_id)
+    fixtures=[]
+    result=[]
+    for match in matches:
+        if match['status']=="completed":
+          result.append(match)
+        else:
+            fixtures.append(match)
+    return render_template('tournament/details.html',
+                           tournament=tournament,
+                           teams=teams,
+                           fixtures=fixtures,
+                           results=result)
+
 
 @app.route('/gallery')
 def gallery():

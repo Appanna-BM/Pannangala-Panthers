@@ -102,6 +102,13 @@
     color: #b7c4bd;
 }
 
+.tournament-cover {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
 .explore-btn {
     margin-top: auto;
     padding-top: 30px;
@@ -122,6 +129,88 @@
     }
 
     .tournament-hero {
-        padding: 60px 25px;
+        padding: 45px 22px;
+        margin-bottom: 40px;
+    }
+
+    .tournament-hero .eyebrow {
+        font-size: 10px;
+        letter-spacing: 1.8px;
+        line-height: 1.5;
+    }
+
+    .tournament-hero h1 {
+        font-size: clamp(34px, 10vw, 48px);
+        line-height: 1.08;
+        letter-spacing: -1px;
+    }
+
+    .tournament-hero > p:last-child {
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    .tournament-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .tournament-heading h2 {
+        font-size: clamp(22px, 6vw, 30px);
+        line-height: 1.15;
+    }
+
+    .tournament-heading span {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .tournament-grid {
+        gap: 18px;
+    }
+
+    .tournament-card {
+        padding: 22px;
+        min-height: 0;
+    }
+
+    .card-top {
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px 14px;
+    }
+
+    .season,
+    .status {
+        font-size: 10px;
+    }
+
+    .season {
+        letter-spacing: 1.4px;
+    }
+
+    .tournament-card h2 {
+        margin: 20px 0 8px;
+        font-size: clamp(24px, 7vw, 30px);
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+    }
+
+    .tournament-card p {
+        margin-bottom: 16px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .tournament-cover {
+        height: 210px;
+    }
+
+    .explore-btn {
+        padding-top: 22px;
+        font-size: 11px;
+        letter-spacing: 0.8px;
     }
 }
