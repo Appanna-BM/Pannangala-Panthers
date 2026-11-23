@@ -197,7 +197,7 @@ color: #aaa;
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.social-links a:hover .fa-instagram{
+.social-links .fa-instagram{
 color: #E1306c;
 transform: translateY(-2px);
 }

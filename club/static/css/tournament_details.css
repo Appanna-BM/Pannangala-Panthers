@@ -125,6 +125,7 @@
     padding: 20px;
     margin-bottom: 10px;
     border-radius: 8px;
+    align-items: center;
 }
 
 .match-info {
@@ -169,6 +170,18 @@
     color: #aebdb4;
 }
 
+.match-stats {
+    border-radius: 6px;
+    border: 1px solid currentColor;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: hsl(38, 100%, 51%);
+    padding: 6px 16px;
+    margin-top: 12px;
+    display: inline-block;
+    align-items: center;
+}
 
 /* TEAMS */
 
@@ -199,6 +212,8 @@
     color: #9ba9a1;
     padding: 30px 0;
 }
+
+
 
 
 /* MOBILE */
