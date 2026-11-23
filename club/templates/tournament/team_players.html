@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ team.team_name }} - Players Squad | Pannangala Panthers
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/team_players.css') }}">
+
+<section class="team-players-section">
+
+    <!-- TOP NAVIGATION / BACK ARROW -->
+    <div class="players-navigation">
+        <a href="{{ url_for('tournament_details', tournament_id=team.tournament_id) }}#teams" class="back-btn" title="Back to Teams">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back to Teams</span>
+        </a>
+    </div>
+
+    <!-- TEAM SQUAD HERO -->
+    <div class="team-hero">
+        <div class="team-hero-meta">
+            <span class="badge-tournament">{{ team.tournament_name or "Tournament" }} {{ team.tournament_year or "" }}</span>
+            <span class="badge-tag">Team Roster</span>
+        </div>
+
+        <div class="team-hero-main">
+            <div class="hero-icon">🛡</div>
+            <div>
+                <h1 class="hero-team-name">{{ team.team_name }}</h1>
+                <p class="hero-subtitle">Official tournament squad & player lineup</p>
+            </div>
+            <div class="squad-counter">
+                <span class="counter-num">{{ players|length }}</span>
+                <span class="counter-label">Players</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLAYERS ROSTER -->
+    <div class="roster-card">
+        <div class="card-header">
+            <div class="header-title">
+                <i class="fa-solid fa-users"></i>
+                <h3>Team Lineup</h3>
+            </div>
+            <span class="header-count">{{ players|length }} Total</span>
+        </div>
+
+        <div class="card-body">
+            {% if players %}
+                <div class="players-grid">
+                    {% for player in players %}
+                    <div class="player-roster-item">
+                        <div class="jersey-badge">
+                            {% if player.jersey_number %}
+                                #{{ player.jersey_number }}
+                            {% else %}
+                                <i class="fa-solid fa-shirt"></i>
+                            {% endif %}
+                        </div>
+
+                        <div class="player-roster-info">
+                            <h4 class="player-roster-name">{{ player.player_name }}</h4>
+                            {% if player.position %}
+                                <span class="position-tag">{{ player.position }}</span>
+                            {% else %}
+                                <span class="position-tag default">Squad Player</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <i class="fa-solid fa-users-slash"></i>
+                    <p>No players listed for this team yet.</p>
+                    <span>Squad roster will be announced soon.</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+</section>
+{% endblock %}

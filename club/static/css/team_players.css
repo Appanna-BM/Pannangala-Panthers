@@ -1,0 +1,315 @@
+/* ===================================================
+   TEAM PLAYERS SQUAD STYLESHEET
+   Pannangala Panthers Club
+   =================================================== */
+
+.team-players-section {
+    width: 100%;
+    max-width: 1100px;
+    padding: 30px 20px 70px;
+    margin: 0 auto;
+}
+
+/* Navigation Back Button */
+.players-navigation {
+    margin-bottom: 24px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #10251c;
+    color: #f4c000;
+    border: 1px solid #53685d;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.back-btn i {
+    font-size: 15px;
+    transition: transform 0.2s ease;
+}
+
+.back-btn:hover {
+    background: #1b3d2f;
+    color: #ffffff;
+    border-color: #f4c000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.back-btn:hover i {
+    transform: translateX(-4px);
+}
+
+/* Hero Section */
+.team-hero {
+    background: linear-gradient(135deg, #071f15, #102d20, #242b0d);
+    color: #ffffff;
+    padding: 35px 40px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    margin-bottom: 25px;
+    border: 1px solid rgba(83, 104, 93, 0.4);
+}
+
+.team-hero-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.badge-tournament {
+    color: #f4c000;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.badge-tag {
+    background: rgba(244, 192, 0, 0.15);
+    color: #f4c000;
+    border: 1px solid #f4c000;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.team-hero-main {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.hero-icon {
+    font-size: 44px;
+    color: #f4c000;
+}
+
+.hero-team-name {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 6px;
+}
+
+.hero-subtitle {
+    color: #bfc9c4;
+    font-size: 14px;
+    margin: 0;
+}
+
+.squad-counter {
+    margin-left: auto;
+    background: #10251c;
+    border: 1px solid #f4c000;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.counter-num {
+    display: block;
+    font-size: 28px;
+    font-weight: 900;
+    color: #f4c000;
+    line-height: 1;
+}
+
+.counter-label {
+    font-size: 11px;
+    color: #aebdb4;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Roster Card */
+.roster-card {
+    background: #10251c;
+    border-radius: 12px;
+    border: 1px solid #2f483c;
+    overflow: hidden;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    background: #0b1a13;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #2f483c;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+}
+
+.header-title i {
+    color: #f4c000;
+    font-size: 18px;
+}
+
+.header-title h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.header-count {
+    background: #1b3d2f;
+    color: #f4c000;
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #53685d;
+}
+
+.card-body {
+    padding: 24px;
+}
+
+/* Players Roster Grid */
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.player-roster-item {
+    background: #153225;
+    border: 1px solid #2f483c;
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.2s ease;
+}
+
+.player-roster-item:hover {
+    background: #1b3d2e;
+    border-color: #f4c000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.jersey-badge {
+    width: 42px;
+    height: 42px;
+    background: #10251c;
+    color: #f4c000;
+    border: 1px solid #f4c000;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.player-roster-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.player-roster-name {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.position-tag {
+    font-size: 11px;
+    color: #aebdb4;
+    background: #0b1a13;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    align-self: flex-start;
+    border: 1px solid #2f483c;
+}
+
+.position-tag.default {
+    color: #6d8477;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #799083;
+}
+
+.empty-state i {
+    font-size: 38px;
+    color: #53685d;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.empty-state p {
+    font-size: 16px;
+    color: #bfc9c4;
+    margin: 0 0 6px;
+    font-weight: 600;
+}
+
+.empty-state span {
+    font-size: 13px;
+    color: #6d8477;
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .team-players-section {
+        padding: 20px 12px 50px;
+    }
+
+    .team-hero {
+        padding: 24px 18px;
+    }
+
+    .team-hero-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .hero-team-name {
+        font-size: 24px;
+    }
+
+    .squad-counter {
+        margin-left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .players-grid {
+        grid-template-columns: 1fr;
+    }
+}
