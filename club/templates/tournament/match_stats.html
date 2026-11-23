@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Match Stats: {{ match.team1_name }} vs {{ match.team2_name }} - Pannangala Panthers
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/match_stats.css') }}">
+
+<section class="match-stats-section">
+
+    <!-- TOP NAVIGATION / BACK ARROW -->
+    <div class="stats-navigation">
+        <a href="{{ url_for('tournament_details', tournament_id=match.tournament_id) }}#results" class="back-btn" title="Back to Results">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back to Results</span>
+        </a>
+    </div>
+
+    <!-- MATCH SCOREBOARD HERO -->
+    <div class="scoreboard-hero">
+        <div class="scoreboard-meta">
+            <span class="badge-tournament">{{ match.tournament_name or "Tournament" }} {{ match.tournament_year or "" }}</span>
+            <span class="badge-stage">{{ match.stage or "Match" }}</span>
+            {% if match.status == 'completed' %}
+                <span class="badge-status completed">Full Time</span>
+            {% else %}
+                <span class="badge-status">{{ match.status|capitalize }}</span>
+            {% endif %}
+        </div>
+
+        <div class="scoreboard-main">
+            <!-- Team 1 -->
+            <div class="team-col team-left">
+                <div class="team-icon">🛡</div>
+                <h2 class="team-name">{{ match.team1_name }}</h2>
+            </div>
+
+            <!-- Score Display -->
+            <div class="score-col">
+                <div class="score-box">
+                    <span class="score-num">{{ match.team1_score }}</span>
+                    <span class="score-dash">:</span>
+                    <span class="score-num">{{ match.team2_score }}</span>
+                </div>
+                <span class="score-label">FINAL SCORE</span>
+            </div>
+
+            <!-- Team 2 -->
+            <div class="team-col team-right">
+                <div class="team-icon">🛡</div>
+                <h2 class="team-name">{{ match.team2_name }}</h2>
+            </div>
+        </div>
+
+        <div class="match-info-strip">
+            {% if match.match_date %}
+                <span><i class="fa-regular fa-calendar"></i> {{ match.match_date }}</span>
+            {% endif %}
+            {% if match.match_time %}
+                <span><i class="fa-regular fa-clock"></i> {{ match.match_time }}</span>
+            {% endif %}
+            {% if match.venue %}
+                <span><i class="fa-solid fa-location-dot"></i> {{ match.venue }}</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- STATS DETAILS GRID -->
+    <div class="stats-grid">
+
+        <!-- GOALS SECTION -->
+        <div class="stats-card">
+            <div class="card-header">
+                <div class="header-title">
+                    <i class="fa-solid fa-futbol"></i>
+                    <h3>Goal Scorers</h3>
+                </div>
+                <span class="header-count">{{ goals|length }} Total</span>
+            </div>
+
+            <div class="card-body">
+                {% if goals %}
+                    <div class="team-events-comparison">
+                        <!-- Team 1 Goals -->
+                        <div class="team-event-column">
+                            <h4 class="column-team-name">{{ match.team1_name }}</h4>
+                            {% if team1_goals %}
+                                <ul class="event-list">
+                                    {% for goal in team1_goals %}
+                                    <li class="event-item goal-item">
+                                        <div class="event-icon goal-icon" title="Goal">⚽</div>
+                                        <div class="event-details">
+                                            <span class="player-name">{{ goal.player_name }}</span>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="no-events-text">No goals scored</p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Team 2 Goals -->
+                        <div class="team-event-column">
+                            <h4 class="column-team-name">{{ match.team2_name }}</h4>
+                            {% if team2_goals %}
+                                <ul class="event-list">
+                                    {% for goal in team2_goals %}
+                                    <li class="event-item goal-item">
+                                        <div class="event-icon goal-icon" title="Goal">⚽</div>
+                                        <div class="event-details">
+                                            <span class="player-name">{{ goal.player_name }}</span>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="no-events-text">No goals scored</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="empty-state">
+                        <i class="fa-regular fa-futbol"></i>
+                        <p>No goals recorded for this match.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- CARDS & DISCIPLINARY SECTION -->
+        <div class="stats-card">
+            <div class="card-header">
+                <div class="header-title">
+                    <i class="fa-solid fa-clone"></i>
+                    <h3>Cards Issued</h3>
+                </div>
+                <span class="header-count">{{ cards|length }} Total</span>
+            </div>
+
+            <div class="card-body">
+                {% if cards %}
+                    <div class="team-events-comparison">
+                        <!-- Team 1 Cards -->
+                        <div class="team-event-column">
+                            <h4 class="column-team-name">{{ match.team1_name }}</h4>
+                            {% if team1_cards %}
+                                <ul class="event-list">
+                                    {% for card in team1_cards %}
+                                    <li class="event-item card-item">
+                                        {% if card.event_type == 'green_card' %}
+                                            <span class="card-tag card-green" title="Green Card"></span>
+                                        {% elif card.event_type == 'yellow_card' %}
+                                            <span class="card-tag card-yellow" title="Yellow Card"></span>
+                                        {% elif card.event_type == 'red_card' %}
+                                            <span class="card-tag card-red" title="Red Card"></span>
+                                        {% endif %}
+
+                                        <div class="event-details">
+                                            <span class="player-name">{{ card.player_name }}</span>
+                                            <span class="card-label">
+                                                {% if card.event_type == 'green_card' %}
+                                                    Green Card
+                                                {% elif card.event_type == 'yellow_card' %}
+                                                    Yellow Card
+                                                {% elif card.event_type == 'red_card' %}
+                                                    Red Card
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="no-events-text">No cards</p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Team 2 Cards -->
+                        <div class="team-event-column">
+                            <h4 class="column-team-name">{{ match.team2_name }}</h4>
+                            {% if team2_cards %}
+                                <ul class="event-list">
+                                    {% for card in team2_cards %}
+                                    <li class="event-item card-item">
+                                        {% if card.event_type == 'green_card' %}
+                                            <span class="card-tag card-green" title="Green Card"></span>
+                                        {% elif card.event_type == 'yellow_card' %}
+                                            <span class="card-tag card-yellow" title="Yellow Card"></span>
+                                        {% elif card.event_type == 'red_card' %}
+                                            <span class="card-tag card-red" title="Red Card"></span>
+                                        {% endif %}
+
+                                        <div class="event-details">
+                                            <span class="player-name">{{ card.player_name }}</span>
+                                            <span class="card-label">
+                                                {% if card.event_type == 'green_card' %}
+                                                    Green Card
+                                                {% elif card.event_type == 'yellow_card' %}
+                                                    Yellow Card
+                                                {% elif card.event_type == 'red_card' %}
+                                                    Red Card
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="no-events-text">No cards</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="empty-state">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <p>No cards issued. Clean match!</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+    <!-- QUICK STATS COMPARISON SUMMARY -->
+    <div class="stats-summary-card">
+        <h3>Match Summary</h3>
+        <div class="summary-row-container">
+
+            <div class="summary-row">
+                <span class="summary-val left">{{ team1_goals|length }}</span>
+                <span class="summary-label">Goals</span>
+                <span class="summary-val right">{{ team2_goals|length }}</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-val left">
+                    {{ team1_cards|selectattr('event_type', 'equalto', 'green_card')|list|length }}
+                </span>
+                <span class="summary-label"><span class="mini-card green"></span> Green Cards</span>
+                <span class="summary-val right">
+                    {{ team2_cards|selectattr('event_type', 'equalto', 'green_card')|list|length }}
+                </span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-val left">
+                    {{ team1_cards|selectattr('event_type', 'equalto', 'yellow_card')|list|length }}
+                </span>
+                <span class="summary-label"><span class="mini-card yellow"></span> Yellow Cards</span>
+                <span class="summary-val right">
+                    {{ team2_cards|selectattr('event_type', 'equalto', 'yellow_card')|list|length }}
+                </span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-val left">
+                    {{ team1_cards|selectattr('event_type', 'equalto', 'red_card')|list|length }}
+                </span>
+                <span class="summary-label"><span class="mini-card red"></span> Red Cards</span>
+                <span class="summary-val right">
+                    {{ team2_cards|selectattr('event_type', 'equalto', 'red_card')|list|length }}
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+{% endblock %}

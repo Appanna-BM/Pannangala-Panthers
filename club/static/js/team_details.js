@@ -17,9 +17,24 @@ function showTab(tabName, button) {
 
 
     // Show selected tab
-    document.getElementById(tabName).classList.add("active");
-
+    const targetContent = document.getElementById(tabName);
+    if (targetContent) {
+        targetContent.classList.add("active");
+    }
 
     // Make clicked button active
-    button.classList.add("active");
+    if (button) {
+        button.classList.add("active");
+    }
 }
+
+// Automatically activate tab if hash is present in URL (e.g., #results)
+document.addEventListener("DOMContentLoaded", function() {
+    if (window.location.hash) {
+        const hash = window.location.hash.replace("#", "");
+        const targetBtn = document.querySelector(`.detail-tabs .tab[onclick*="${hash}"]`);
+        if (targetBtn) {
+            showTab(hash, targetBtn);
+        }
+    }
+});

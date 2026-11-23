@@ -146,7 +146,9 @@
                     </strong>
 
                 </div>
-                <a href="#" class="match-stats">View Stats</a>
+                <a href="{{ url_for('match_stats', match_id=match.id) }}" class="match-stats">
+                    <i class="fa-solid fa-chart-simple"></i> View Stats
+                </a>
 
             </div>
 
@@ -174,13 +176,19 @@
 
             <div class="team-card">
 
-                <div class="team-icon">
-                    🛡
+                <div class="team-card-info">
+                    <div class="team-icon">
+                        🛡
+                    </div>
+
+                    <span class="team-name">
+                        {{ team.team_name }}
+                    </span>
                 </div>
 
-                <span>
-                    {{ team.team_name }}
-                </span>
+                <a href="{{ url_for('tournament_team_players', team_id=team.id) }}" class="view-team-btn">
+                    View Team <i class="fa-solid fa-arrow-right"></i>
+                </a>
 
             </div>
 
