@@ -229,9 +229,21 @@
         <div class="summary-row-container">
 
             <div class="summary-row">
-                <span class="summary-val left">{{ team1_goals|length }}</span>
+                <span class="summary-val left">{{ (team1_goals|length)+(match.team1_pconverted) }}</span>
                 <span class="summary-label">Goals</span>
-                <span class="summary-val right">{{ team2_goals|length }}</span>
+                <span class="summary-val right">{{ (team2_goals|length)+(match.team2_pconverted) }}</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-val left">{{ match.team1_penalty or 0 }}</span>
+                <span class="summary-label">Penalties</span>
+                <span class="summary-val right">{{ match.team2_penalty or 0 }}</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-val left">{{ match.team1_pconverted or 0 }}</span>
+                <span class="summary-label">Penalties Converted</span>
+                <span class="summary-val right">{{ match.team2_pconverted or 0 }}</span>
             </div>
 
             <div class="summary-row">

@@ -160,6 +160,10 @@ def get_match(match_id):
                 m.team2_id,
                 m.team1_score,
                 m.team2_score,
+                m.team1_penalty,
+                m.team2_penalty,
+                m.team1_pconverted,
+                m.team2_pconverted,
                 m.status,
 
                 t1.team_name AS team1_name,
